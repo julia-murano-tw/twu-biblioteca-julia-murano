@@ -118,7 +118,7 @@ public class BibliotecaTest {
 
     }
     @Test
-    public void ShouldCheckOutBookFailMessage(){
+    public void ShouldFailToCheckOutBookMessage(){
         biblioteca.checkOut("Invented Book");
         assertThat(outputStreamCaptor.toString(), containsString("Sorry, that book is not available"));
 
@@ -133,6 +133,25 @@ public class BibliotecaTest {
         assertThat(outputStreamCaptor.toString(),containsString("Boring Book"));
 
     }
-    
+
+    @Test
+    public void ShouldReturnBookSuccessMessage(){
+        BibliotecaApp tempBiblioteca = new BibliotecaApp();
+        tempBiblioteca.checkOut("Boring Book");
+        tempBiblioteca.returnBook("Boring Book");
+        tempBiblioteca.showAllBooks();
+        assertThat(outputStreamCaptor.toString(),containsString("Thank you for returning the book"));
+
+    }
+
+    @Test
+    public void ShouldFailToReturnBook(){
+
+        biblioteca.returnBook("Invented Book");
+        biblioteca.showAllBooks();
+        assertThat(outputStreamCaptor.toString(),containsString("That is not a valid book to return."));
+
+
+    }
 
 }

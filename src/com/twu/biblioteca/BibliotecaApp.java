@@ -31,7 +31,7 @@ public class BibliotecaApp {
 
     public void showAllBooks() {
         String bookInfo = "";
-
+        System.out.println("--------\nList Of Available Books\n\n");
         for (Book book : this.BooksList){
             if (!book.isCheckedOut()){
                 bookInfo = book.getTitle().concat(" - " + book.getAuthor()  +  " - " + book.getPublicationYear());
@@ -40,6 +40,7 @@ public class BibliotecaApp {
 
 
         }
+        System.out.println("--------\n") ;
     }
 
     public void showMainMenu() {
@@ -47,7 +48,7 @@ public class BibliotecaApp {
 
         Scanner menuScanner = new Scanner(System.in);
         while (!exitOption){
-            System.out.println("\nChoose an option: \n   1 - List of books\n   2 - Check out Book\n   3 - Return book\n\n   0 - exit");
+            System.out.println("\n--------\nMENU\n\nChoose an option: \n   1 - List of books\n   2 - Check out Book\n   3 - Return book\n\n   0 - exit\n--------\n");
             String userInput = menuScanner.nextLine();
             switch (userInput) {
                 case "1":
@@ -89,7 +90,11 @@ public class BibliotecaApp {
         for (Book book: this.BooksList){
             if(book.getTitle().equals(title) && book.isCheckedOut() ){
                 book.returnBook();
+                System.out.println("Thank you for returning the book");
+                return;
             }
         }
+        System.out.println("That is not a valid book to return.");
+
     }
 }
