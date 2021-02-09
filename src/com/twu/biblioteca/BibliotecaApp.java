@@ -47,7 +47,7 @@ public class BibliotecaApp {
 
         Scanner menuScanner = new Scanner(System.in);
         while (!exitOption){
-            System.out.println("\nChoose an option: \n   1 - List of books\n   2 - Check out Book\n\n   0 - exit");
+            System.out.println("\nChoose an option: \n   1 - List of books\n   2 - Check out Book\n   3 - Return book\n\n   0 - exit");
             String userInput = menuScanner.nextLine();
             switch (userInput) {
                 case "1":
@@ -57,6 +57,11 @@ public class BibliotecaApp {
                     System.out.println("Please type the title of the book you want to check out");
                     String bookNameCheckout = menuScanner.nextLine();
                     this.checkOut(bookNameCheckout);
+                    break;
+                case "3":
+                    System.out.println("Please type title of Book to return");
+                    String bookNameReturn = menuScanner.nextLine();
+                    this.returnBook(bookNameReturn);
                     break;
                 case "0":
                     exitOption = true;
@@ -78,5 +83,13 @@ public class BibliotecaApp {
             }
         }
         System.out.println("Sorry, that book is not available");
+    }
+
+    public void returnBook(String title) {
+        for (Book book: this.BooksList){
+            if(book.getTitle().equals(title) && book.isCheckedOut() ){
+                book.returnBook();
+            }
+        }
     }
 }

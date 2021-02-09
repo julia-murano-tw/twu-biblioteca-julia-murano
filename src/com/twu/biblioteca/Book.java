@@ -31,4 +31,8 @@ public class Book {
     public boolean isCheckedOut() {
         return this.checkedOut;
     }
+
+    public void returnBook() {
+        this.checkedOut = false;
+    }
 }
