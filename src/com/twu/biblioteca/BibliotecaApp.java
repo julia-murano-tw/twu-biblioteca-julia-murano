@@ -73,6 +73,7 @@ public class BibliotecaApp {
         for (Book book: this.BooksList){
             if (book.getTitle().equals(title)){
                 book.checkOut();
+                System.out.println("Thank you! Enjoy the book”");
                 break;
             }
         }

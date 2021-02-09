@@ -108,7 +108,13 @@ public class BibliotecaTest {
         tempBiblioteca.showAllBooks();
         assertThat(outputStreamCaptor.toString(), not(containsString("Boring Book")));
 
-
     }
 
+    @Test
+    public void ShouldCheckOutBookSuccessMessage(){
+        BibliotecaApp tempBiblioteca = new BibliotecaApp();
+        tempBiblioteca.checkOut("Boring Book");
+        assertThat(outputStreamCaptor.toString(), containsString("Thank you! Enjoy the book”"));
+
+    }
 }
